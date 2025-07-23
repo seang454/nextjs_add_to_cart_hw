@@ -30,17 +30,17 @@ export default function ProductsCard({ product }: ProductCardProps) {
               height={100}
               className="w-full object-cover h-48"
               src={
-                product.thumbnail ||
+                product.images[0] ||
                 "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzJOBc888horStIw5v_cpA6OOGG39NMeDgEg&s"
               }
               alt="image"
               unoptimized
             />
             <div className="p-5">
-              <h3 className="text-lg font-semibold text-gray-800">
+              <h3 className="text-lg font-semibold text-gray-800 line-clamp-1">
                 {product.title || "Classic Sneakers"}
               </h3>
-              <p className="text-gray-600 text-sm mt-2">
+              <p className="text-gray-600 text-sm mt-2 line-clamp-3">
                 {product.description ||
                   "Comfortable and stylish sneakers perfect for everyday wear. Available in multiple colors."}
               </p>

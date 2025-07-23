@@ -13,7 +13,7 @@ export default function ProductPage() {
   // const products: ProductType[] = data.products;
 
   // Using RTK Query to fetch products
-  const { data = { products: [] }, isLoading, error } = useGetProductsQuery();
+  const { data, isLoading, error } = useGetProductsQuery();
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Failed to load products</p>;
   console.log(data);
@@ -24,7 +24,7 @@ export default function ProductPage() {
         Product Page
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-4">
-        {data.products.map((product) => (
+        {data?.map((product) => (
           <Link
             key={product.id}
             href={`/product/${product.id}`}
@@ -35,7 +35,7 @@ export default function ProductPage() {
               title={product.title}
               description={product.description}
               price={product.price}
-              thumbnail={product.thumbnail}
+              images={product.images}
               category={product.category}
             />
           </Link>

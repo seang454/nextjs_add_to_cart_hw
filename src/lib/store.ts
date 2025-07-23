@@ -7,7 +7,7 @@ import cartReducer from "./features/counterSlice"; //default import
 const persistConfig = {
   key: "root",
   storage,
-  //   whitelist: ["cart"], // persist only the cart slice
+  whitelist: ["cart"], // persist only the cart slice
 };
 
 const rootReducer = combineReducers({

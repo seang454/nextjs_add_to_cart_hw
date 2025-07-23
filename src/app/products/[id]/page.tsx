@@ -27,7 +27,7 @@ export default function Page() {
       <div className="flex bg-white rounded-lg shadow dark:bg-gray-800 flex-col md:flex-row">
         <div className="relative w-full md:w-[50%] flex justify-center items-center">
           <Image
-            src={productDetail.thumbnail}
+            src={productDetail.images[0] || "/placeholder.svg"}
             alt={productDetail.title}
             width={300}
             height={300}
@@ -114,7 +114,7 @@ export default function Page() {
             {productDetail.description}
           </p>
           <p className="text-lg dark:text-gray-300 bg-blue-300 p-2 rounded-lg mt-5 text-white">
-            Category : {productDetail.category}
+            Category : {productDetail.category.name}
           </p>
         </form>
       </div>
