@@ -55,7 +55,7 @@ export default function ProductDetail() {
         <div className="w-[90%] mx-auto my-10">
             <div className="flex bg-white rounded-lg shadow dark:bg-gray-800 flex-col md:flex-row">
                 <div className="relative w-full md:w-[50%] flex justify-center items-center">
-                    <Image src={productDetail.thumbnail} alt={productDetail.title}
+                    <Image src={productDetail.images[0]} alt={productDetail.title}
                     width={300}
                     height={300}
                     unoptimized
@@ -104,7 +104,7 @@ export default function ProductDetail() {
                             now</button>
                     </div>
                     <p className="text-sm text-gray-500 dark:text-gray-300">{productDetail.description}</p>
-                    <p className="text-lg dark:text-gray-300 bg-blue-300 p-2 rounded-lg mt-5 text-white">Category : {productDetail.category}</p>
+                    <p className="text-lg dark:text-gray-300 bg-blue-300 p-2 rounded-lg mt-5 text-white">Category : {productDetail.category.name}</p>
                 </form>
             </div>
         </div>

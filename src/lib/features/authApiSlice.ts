@@ -1,5 +1,7 @@
 import { ProductDetailType, ProductType, UpdateProductDto } from "@/types/productType";
 import { productsApi } from "../api/productsApi";
+import { CreateUserDto, Login, UserLoginResponse, UserTypeRegister } from "@/types/userType";
+import { FileUploadType } from "@/types/fileType";
 
 export const apiSlice = productsApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -32,6 +34,36 @@ export const apiSlice = productsApi.injectEndpoints({
         url:`products/${id}`,
         method:'DELETE',
       })
+    }),
+    createUser:builder.mutation<UserTypeRegister, CreateUserDto>({
+      query: (formData) => ({
+        url: `users`,
+        method: 'POST',
+        body: formData,
+      }),
+      invalidatesTags: [{ type: "User", id: "LIST" }],
+    }),
+    login:builder.mutation<UserLoginResponse,Login>({
+      query: (credentials) => ({
+        url: `auth/login`,
+        method: 'POST',
+        body: credentials,
+      }),
+      invalidatesTags: [{ type: "User", id: "LIST" }],
+
+    }),
+    createFile: builder.mutation<FileUploadType, FormData>({
+      query: (formData) => {
+        // Get token from localStorage or cookie (adjust as needed)
+        // const token = typeof window !== 'undefined' ? localStorage.getItem('token') : undefined;
+        return {
+          url: `files/upload`,
+          method: 'POST',
+          body: formData,
+          // headers: token ? { Authorization: `Bearer ${token}` } : {},
+        };
+      },
+      invalidatesTags: [{ type: "File", id: "LIST" }],
     })
   }),
 
@@ -42,5 +74,8 @@ export const {
   useGetProductByIdQuery,
   useCreateProductMutation,
   useUpdateProductMutation,
-  useDeleteProductMutation
+  useDeleteProductMutation,
+  useCreateUserMutation,
+  useCreateFileMutation,
+  useLoginMutation
 } = apiSlice;
