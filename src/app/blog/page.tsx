@@ -2,7 +2,7 @@ import BlogCard from '@/components/blog/BlogCard';
 import React from 'react'
 
 async function getBlog(){
-  const blogs = await fetch(`${process.env.BASE_URL_API}posts`)
+  const blogs = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL_API_V2}posts`)
   const data = await blogs.json();
   return data.posts
 }
