@@ -1,4 +1,4 @@
-import Script from 'next/script'
+import Script from "next/script";
 import type { Metadata } from "next";
 import { Ubuntu } from "next/font/google";
 import localFont from "next/font/local";
@@ -9,7 +9,7 @@ import Error from "./error";
 import { ErrorBoundary } from "next/dist/client/components/error-boundary";
 import NavbarWrapper from "@/components/header/NavbarWrapper";
 import { Providers } from "@/lib/Providers";
-import { Analytics } from './analytics';
+import { Analytics } from "./analytics";
 
 const ubuntu = Ubuntu({
   variable: "--font-ubuntu",
@@ -21,39 +21,39 @@ const ubuntu = Ubuntu({
 const suwannaphum = localFont({
   src: [
     {
-      path: '../../public/fonts/Suwannaphum-Black.ttf',
-      weight: '900',
-      style: 'black',
+      path: "../../public/fonts/Suwannaphum-Black.ttf",
+      weight: "900",
+      style: "black",
     },
     {
-      path: '../../public/fonts/Suwannaphum-Bold.ttf',
-      weight: '700',
-      style: 'bold',
+      path: "../../public/fonts/Suwannaphum-Bold.ttf",
+      weight: "700",
+      style: "bold",
     },
     {
-      path: '../../public/fonts/Suwannaphum-Regular.ttf',
-      weight: '400',
-      style: 'normal',
+      path: "../../public/fonts/Suwannaphum-Regular.ttf",
+      weight: "400",
+      style: "normal",
     },
     {
-      path: '../../public/fonts/Suwannaphum-Light.ttf',
-      weight: '300',
-      style: 'light',
+      path: "../../public/fonts/Suwannaphum-Light.ttf",
+      weight: "300",
+      style: "light",
     },
     {
-      path: '../../public/fonts/Suwannaphum-Thin.ttf',
-      weight: '100',
-      style: 'thin',
-    }
+      path: "../../public/fonts/Suwannaphum-Thin.ttf",
+      weight: "100",
+      style: "thin",
+    },
   ],
   variable: "--font-suwannaphum",
   display: "swap",
-})
-
+});
 
 export const metadata: Metadata = {
   title: "Home | FullStack Morning",
-  description: "A simple Next.js app with TypeScript, Tailwind CSS, and Geist UI",
+  description:
+    "A simple Next.js app with TypeScript, Tailwind CSS, and Geist UI",
   keywords: [
     "Next.js",
     "TypeScript",
@@ -66,17 +66,20 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Home | FullStack Morning",
-    description: "A simple Next.js app with TypeScript, Tailwind CSS, and Geist UI",
+    description:
+      "A simple Next.js app with TypeScript, Tailwind CSS, and Geist UI",
     url: "https://fullstack-nextjs-morning.vercel.app/",
     siteName: "FullStack Morning",
-    images: "https://media.licdn.com/dms/image/v2/C5612AQFxx3XzXO9Vew/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1583841493429?e=2147483647&v=beta&t=nOghzOBbkw7pVweJUyiUzSYZtqz8l5EPsdHcnWvy-DU",
+    images:
+      "https://media.licdn.com/dms/image/v2/C5612AQFxx3XzXO9Vew/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1583841493429?e=2147483647&v=beta&t=nOghzOBbkw7pVweJUyiUzSYZtqz8l5EPsdHcnWvy-DU",
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Home | FullStack Morning",
-    description: "A simple Next.js app with TypeScript, Tailwind CSS, and Geist UI",
+    description:
+      "A simple Next.js app with TypeScript, Tailwind CSS, and Geist UI",
     images: "",
   },
   icons: {
@@ -94,18 +97,22 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-YYMENFP01R"
-          strategy="afterInteractive"
-        />
-        <Script id="gtag-init" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
-          `}
-        </Script>
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="gtag-init" strategy="afterInteractive">
+              {`
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+      `}
+            </Script>
+          </>
+        )}
       </head>
 
       <body
@@ -113,13 +120,12 @@ export default function RootLayout({
       >
         <Providers>
           <ErrorBoundary errorComponent={Error}>
-          
-          <Suspense fallback={<Loading />}>
-          <NavbarWrapper />
-          <Analytics />
-            {children}
-          </Suspense>
-        </ErrorBoundary>
+            <Suspense fallback={<Loading />}>
+              <NavbarWrapper />
+              <Analytics />
+              {children}
+            </Suspense>
+          </ErrorBoundary>
         </Providers>
       </body>
     </html>
