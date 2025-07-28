@@ -1,3 +1,4 @@
+import Script from 'next/script'
 import type { Metadata } from "next";
 import { Ubuntu } from "next/font/google";
 import localFont from "next/font/local";
@@ -8,6 +9,7 @@ import Error from "./error";
 import { ErrorBoundary } from "next/dist/client/components/error-boundary";
 import NavbarWrapper from "@/components/header/NavbarWrapper";
 import { Providers } from "@/lib/Providers";
+import { Analytics } from './analytics';
 
 const ubuntu = Ubuntu({
   variable: "--font-ubuntu",
@@ -91,6 +93,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-YYMENFP01R"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+          `}
+        </Script>
+      </head>
+
       <body
         className={`${ubuntu.variable} ${suwannaphum.variable} antialiased`}
       >
@@ -99,6 +116,7 @@ export default function RootLayout({
           
           <Suspense fallback={<Loading />}>
           <NavbarWrapper />
+          <Analytics />m,
             {children}
           </Suspense>
         </ErrorBoundary>
