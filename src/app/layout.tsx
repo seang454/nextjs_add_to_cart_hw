@@ -116,7 +116,7 @@ export default function RootLayout({
           
           <Suspense fallback={<Loading />}>
           <NavbarWrapper />
-          <Analytics />m,
+          <Analytics />
             {children}
           </Suspense>
         </ErrorBoundary>
