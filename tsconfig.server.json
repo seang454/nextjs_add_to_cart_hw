@@ -1,0 +1,11 @@
+//You should create a new file at the root of your project to run socket server
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noEmit": false,
+    "outDir": "./dist"
+  },
+  "include": ["server.ts"]
+}

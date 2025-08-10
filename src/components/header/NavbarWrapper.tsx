@@ -7,6 +7,5 @@ export default function NavbarWrapper() {
     const hiddenPaths = ['/dashboard', '/home', '/blog-dashboard', '/register', '/login'];
      const shouldHideNavbar = hiddenPaths.some((path) => pathname === path || pathname.startsWith(`${path}/`));
     if (shouldHideNavbar) return null;
-
     return <NavbarComponent />;
 }

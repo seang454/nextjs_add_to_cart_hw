@@ -22,6 +22,11 @@ export const navLink: NavbarType[] = [
         active: false,
     },
     {
+        path: '/chat',
+        name: 'Chat',
+        active: false,
+    },
+    {
         path: '/user',
         name: 'User',
         active: false,

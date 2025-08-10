@@ -82,3 +82,9 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+### ✅ Let build chat using web socker
+1. install :  full TypeScript version of the Socket.IO example in Next.js with a custom server
+    1. npm install next react react-dom socket.io socket.io-client
+    2. npm install --save-dev @types/node @types/react @types/socket.io-client typescript

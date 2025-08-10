@@ -10,7 +10,6 @@ import { ErrorBoundary } from "next/dist/client/components/error-boundary";
 import NavbarWrapper from "@/components/header/NavbarWrapper";
 import { Providers } from "@/lib/Providers";
 import { Analytics } from "./analytics";
-
 const ubuntu = Ubuntu({
   variable: "--font-ubuntu",
   subsets: ["latin"],

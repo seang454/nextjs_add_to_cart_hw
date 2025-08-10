@@ -6,6 +6,8 @@ import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 import { ShoppingCart } from "lucide-react";
 import { useAppSelector } from "@/lib/hooks";
+import SignIn from "../sign_in/page";
+import SignOut from "../sign-out/page";
 
 export default function NavbarComponent() {
   const data = useAppSelector((state) => state.cart);
@@ -60,6 +62,8 @@ export default function NavbarComponent() {
               >
                 Get Started
               </a>
+              <SignIn/>
+              <SignOut/>
               <Link href={"/cart"} className="relative flex items-center group">
                 <span className="absolute -top-2 -right-2 bg-rose-500 text-white text-xs font-bold rounded-full px-2 py-0.5 shadow-lg border-2 border-white group-hover:scale-110 transition-transform">
                   {data.itemsCount}
